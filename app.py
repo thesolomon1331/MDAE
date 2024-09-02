@@ -21,20 +21,19 @@ if not os.path.exists('static/plots'):
     os.makedirs('static/plots')
 
 # Load the pre-trained scaler, feature names, and models
-scaler_filename = 'saved_models/scaler.pkl'
-feature_names_filename = 'saved_models/feature_names.pkl'
+scaler_filename = '/opt/render/project/src/saved_models/scaler.pkl'
+feature_names_filename = '/opt/render/project/src/saved_models/feature_names.pkl'
 scaler = joblib.load(scaler_filename)
 feature_names = joblib.load(feature_names_filename)
 
 model_paths = {
-    'Device Risk Classification': 'saved_models/best_model_device_risk_classification.pkl',
-    'Causality Assessment': 'saved_models/best_model_causality_assessment.pkl',
-    'Serious Event': 'saved_models/best_model_serious_event.pkl',
-    'Prolongation of Event': 'saved_models/best_model_prolongation_of_event.pkl',
-    'Potential Diseases or Side Effects': 'saved_models/best_model_potential_diseases_or_side_effects.pkl',
-    'Prevention Techniques': 'saved_models/best_model_prevention_techniques.pkl'
+    'Device Risk Classification': '/opt/render/project/src/saved_models/best_model_device_risk_classification.pkl',
+    'Causality Assessment': '/opt/render/project/src/saved_models/best_model_causality_assessment.pkl',
+    'Serious Event': '/opt/render/project/src/saved_models/best_model_serious_event.pkl',
+    'Prolongation of Event': '/opt/render/project/src/saved_models/best_model_prolongation_of_event.pkl',
+    'Potential Diseases or Side Effects': '/opt/render/project/src/saved_models/best_model_potential_diseases_or_side_effects.pkl',
+    'Prevention Techniques': '/opt/render/project/src/saved_models/best_model_prevention_techniques.pkl'
 }
-
 models = {}
 for target_name, path in model_paths.items():
     try:
