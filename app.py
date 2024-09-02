@@ -9,29 +9,30 @@ import seaborn as sns
 import squarify
 
 # Set up logging
+# Set up logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Necessary for flashing messages
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'supersecretkey')  # Use environment variable for secret key
 
 # Ensure the static/plots directory exists
 if not os.path.exists('static/plots'):
     os.makedirs('static/plots')
 
 # Load the pre-trained scaler, feature names, and models
-scaler_filename = 'D:/FYP/saved_models/scaler.pkl'
-feature_names_filename = 'D:/FYP/saved_models/feature_names.pkl'
+scaler_filename = 'saved_models/scaler.pkl'
+feature_names_filename = 'saved_models/feature_names.pkl'
 scaler = joblib.load(scaler_filename)
 feature_names = joblib.load(feature_names_filename)
 
 model_paths = {
-    'Device Risk Classification': 'D:/FYP/saved_models/best_model_device_risk_classification.pkl',
-    'Causality Assessment': 'D:/FYP/saved_models/best_model_causality_assessment.pkl',
-    'Serious Event': 'D:/FYP/saved_models/best_model_serious_event.pkl',
-    'Prolongation of Event': 'D:/FYP/saved_models/best_model_prolongation_of_event.pkl',
-    'Potential Diseases or Side Effects': 'D:/FYP/saved_models/best_model_potential_diseases_or_side_effects.pkl',
-    'Prevention Techniques': 'D:/FYP/saved_models/best_model_prevention_techniques.pkl'
+    'Device Risk Classification': 'saved_models/best_model_device_risk_classification.pkl',
+    'Causality Assessment': 'saved_models/best_model_causality_assessment.pkl',
+    'Serious Event': 'saved_models/best_model_serious_event.pkl',
+    'Prolongation of Event': 'saved_models/best_model_prolongation_of_event.pkl',
+    'Potential Diseases or Side Effects': 'saved_models/best_model_potential_diseases_or_side_effects.pkl',
+    'Prevention Techniques': 'saved_models/best_model_prevention_techniques.pkl'
 }
 
 models = {}
