@@ -4,5 +4,6 @@ numpy
 joblib
 matplotlib
 seaborn
+openpyxl  # Required for reading Excel files with pandas
 squarify
-openpyxl  
+gunicorn  # For running the Flask app in production
